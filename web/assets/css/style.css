@@ -1,0 +1,34 @@
+.done {
+    text-decoration: line-through; /* erledigte tasks sollen durchgestrichen angezeigt werden */
+}
+
+/* benachrichtigungen */
+
+    .flash {
+        border: 2px dashed; /* gestrichelte kontur */
+        padding: 5px; /* etwas abstand zum rahmen */
+    }
+
+    .flash.success { /* positive benachrichtigungen sind grün */
+        border-color: rgba(0,255,0,1);
+        background-color: rgba(0,255,0,0.25);
+    }
+
+    .flash.error { /* negative benachrichtigungen sind rot */
+        border-color: rgba(255,0,0,1);
+        background-color: rgba(255,0,0,0.25);
+    }
+
+/* formulare */
+
+    form div {
+        margin-bottom: 10px; /* zwischen den feldern/buttons soll es etwas platz geben */
+    }
+
+    form label {
+        margin-right: 5px; /* das label soll nicht direkt am formular-feld "kleben" */
+    }
+
+    form li {
+        color: red; /* fehlermeldungen in formularen sollen rot angezeigt werden */
+    }

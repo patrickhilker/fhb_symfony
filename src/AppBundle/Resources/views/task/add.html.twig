@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %} {# dieses template erweitert unser "basis"-template #}
+
+{% block meta_title %}
+
+    Neue Aufgabe - {{ parent() }} {# titel der seite erweitern #}
+
+{% endblock %}
+
+{% block content %} {# hier wird der inhalt der seite festgelegt #}
+
+    <h1>Aufgabe hinzufügen</h1>
+
+    {{ form_start(form) }} {# mit diesen drei tags wird auf einfache art und weise das gesamte formular "form" ausgegeben #}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %} {# dieses template erweitert unser "basis"-template #}
+
+{% block meta_title %}
+
+    Meine Aufgaben - {{ parent() }} {# titel der seite erweitern #}
+
+{% endblock %}
+
+{% block content %} {# hier wird der inhalt der seite festgelegt #}
+
+    <h1>ToDo-Liste</h1>
+
+    <p>
+        <a href="{{ path('task.add') }}">Aufgabe hinzufügen</a>
+    </p>
+
+    {% if tasks|length > 0 %} {# wenn es tasks gibt ... #}
+
+        <ul>
+
+            {% for task in tasks %} {# in einer schleife alle tasks durchlaufen #}
+
+                <li{% if task.done %} class="done"{% endif %}> {# wenn der task als erledigt markiert wurde, soll eine klasse "done" hinzugefügt werden #}
+
+                    {% if not task.done %} {# wenn der task noch nicht erleidgt ist ... #}
+                        <a href="{{ path('task.done', {'task': task.id}) }}" title="abhaken">✓</a> {# ... dann soll ein link zum abhaken des tasks angezeigt werden #}
+                    {% endif %}
+
+                    {{ task.name }} {# der name des tasks soll ausgegeben werden#}
+
+                </li>
+
+            {% endfor %}
+
+        </ul>
+
+    {% else %} {# wenn es keine tasks gibt ... #}
+
+        <p class="flash error">Es wurden noch keine Aufgaben angelegt.</p> {# ... soll eine entsprechende meldung gezeigt werden #}
+
+    {% endif %}
+
+{% endblock %}

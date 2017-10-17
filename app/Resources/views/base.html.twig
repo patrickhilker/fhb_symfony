@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>{% block meta_title %}ToDo-Liste{% endblock %}</title>
+
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+
+    </head>
+    <body>
+
+        {% for message in app.flashes('success') %} {# erfolgsmeldungen anzeigen #}
+
+            <p class="flash success">
+                {{ message }}
+            </p>
+
+        {% endfor %}
+
+        {% block content %} {# hier wird später der inhalt eingefügt #}
+            <p class="flash error">Kein Inhalt definiert</p> {# wird kein inhalt festgelgt, wird diese fehlermeldung gezeigt #}
+        {% endblock %}
+
+    </body>
+</html>
