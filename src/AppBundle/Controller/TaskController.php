@@ -46,11 +46,12 @@ class TaskController extends Controller
      */
     public function addAction(Request $request) {
 
-        $task = new Task();
-        $form = $this->createFormBuilder($task) // formular erzeugen
-            ->add('name', TextType::class, array('required' => false))
-            ->add('save', SubmitType::class, array('label' => 'Aufgabe speichern'))
-            ->getForm();
+        $task = new Task(); // leere aufgabe erzeugen
+
+        $form = $this->createFormBuilder($task) // formular-builder erzeugen
+            ->add('name', TextType::class, array('required' => false)) // textfeld für den namen hinzufügen
+            ->add('save', SubmitType::class, array('label' => 'Aufgabe speichern')) // speichern-button hinzufügen
+            ->getForm(); // formular erzeugen
 
         $form->handleRequest($request); // request an das formular weiterreichen
 
@@ -68,6 +69,24 @@ class TaskController extends Controller
 
         return $this->render('AppBundle:task:add.html.twig', array( // antwort an den clienten erzeugen
             'form' => $form->createView(), // formular zur ausgabe an twig weitergeben
+        ));
+    }
+
+    /**
+     * @Route("task/new/controller/", name="task.new.controller")
+     */
+    public function addInControllerAction(Request $request) {
+
+        $task = new Task();
+        $task->setName('Controller-Aufgabe');
+        $task->setDone(0);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($task);
+        $em->flush();
+
+        return $this->render('AppBundle:task:add_controller.html.twig', array(
+            'task' => $task,
         ));
     }
 }

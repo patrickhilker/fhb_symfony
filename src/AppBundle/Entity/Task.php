@@ -59,7 +59,6 @@ class Task
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -83,7 +82,6 @@ class Task
     public function setDone($done)
     {
         $this->done = $done;
-
         return $this;
     }
 
